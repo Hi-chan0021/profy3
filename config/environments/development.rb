@@ -59,7 +59,18 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
-  config.action_mailer.default_url_options = {protocol: 'https', host: 'ttps://c0c41d175a2747e8a59db14e40bdb58e.vfs.cloud9.ap-northeast-1.amazonaws.com/?_c9_id=livepreview0&_c9_host=https://ap-northeast-1.console.aws.amazon.com' }
+  config.action_mailer.default_url_options = {host: 'https://c0c41d175a2747e8a59db14e40bdb58e.vfs.cloud9.ap-northeast-1.amazonaws.com' }
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :enable_starttls_auto => true,
+    :address => "smtp.gmail.com",
+    :port => 587,
+    :domain => 'smtp.gmail.com',
+    :user_name => "profy.new.adress@gmail.com", #先ほど作成した送信用Gmailアドレス
+    :password => "alsunxbounugixlz", #2段階認証したアカウントで発行したアプリパスワード
+    :authentication => 'login'
+  }
   
 
 end
